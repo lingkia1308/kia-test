@@ -25,7 +25,6 @@ phases:
     - echo Build completed on `date` 
     - echo pushing to repo
     - docker push $ECR_REPO_URL:$IMAGE_TAG
-    - docker push $ECR_REPO_URL:$IMAGE_TAG
     - echo Writing image definitions file... 
     - printf '{"ImageURI":"%s"}' $ECR_REPO_URL:$IMAGE_TAG > imageDetail.json
 artifacts:
