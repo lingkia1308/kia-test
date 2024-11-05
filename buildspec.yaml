@@ -40,7 +40,7 @@ phases:
       - aws eks update-kubeconfig --name $EKS_CLUSTERNAME
       # Show time, applying manifests changes using kubectl
       - echo "Apply changes to kube manifests"            
-      - kubectl apply -f manifests/
+      - kubectl apply -f deployment.yaml
       - echo "All done!!!! Kubernetes changes applied"   
       - echo Writing image definitions file...
       - printf '{"ImageURI":"%s"}' $ECR_REPO_URL:$IMAGE_TAG > imageDetail.json
