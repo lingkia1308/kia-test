@@ -33,8 +33,8 @@ phases:
       # Push the image tagged as 'latest' to ECR
       - docker push $ECR_REPO_URL:latest
       # #####
-      - CREDENTIALS=$(aws sts assume-role --role-arn $EKS_ROLE_ARN --role-session-name eks-codebuild --duration-seconds 900)
-      - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
+      # - CREDENTIALS=$(aws sts assume-role --role-arn $EKS_ROLE_ARN --role-session-name eks-codebuild --duration-seconds 900)
+      # - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       # Updating kubectl with your EKS Cluster              
       - echo "Update Kube Config configuration"      
       - aws eks update-kubeconfig --name $EKS_CLUSTERNAME
