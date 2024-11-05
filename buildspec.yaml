@@ -13,13 +13,13 @@ phases:
     - $(aws ecr get-login --no-include-email --region ap-southeast-1)
     - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
     - IMAGE_TAG=${COMMIT_HASH:=latest}
-    - REPOSITORY_URI=806263047535.dkr.ecr.ap-southeast-1.amazonaws.com/afsb-dtp-staging-repo/kia-image
+    - REPOSITORY_URI=$ECR_REPO_URL
   build: 
     commands: 
     - echo Build started on `date` 
     - echo Building the Docker image... 
-    - docker build -t 806263047535.dkr.ecr.ap-southeast-1.amazonaws.com/afsb-dtp-staging-repo:latest .
-    - docker tag 806263047535.dkr.ecr.ap-southeast-1.amazonaws.com/afsb-dtp-staging-repo:latest 806263047535.dkr.ecr.ap-southeast-1.amazonaws.com/afsb-dtp-staging-repo:$IMAGE_TAG 
+    - docker build -t ECR_REPO_URL:$IMAGE_TAG .
+    - docker tag $ECR_REPO_URL:latest $ECR_REPO_URL:$IMAGE_TAG 
   post_build: 
     commands: 
     - echo Build completed on `date` 
@@ -27,7 +27,7 @@ phases:
     - docker push 806263047535.dkr.ecr.ap-southeast-1.amazonaws.com/afsb-dtp-staging-repo:latest
     - docker push $REPOSITORY_URI:$IMAGE_TAG
     - echo Writing image definitions file... 
-    - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+    - printf '{"ImageURI":"%s"}' $ECR_REPO_URL:$IMAGE_TAG > imageDetail.json
 artifacts:
   files:
     - imageDetail.json
