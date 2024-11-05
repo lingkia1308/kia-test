@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: afsb-dtp-staging-eks-cluster
+  labels:
+    app: afsb-dtp-staging-eks-cluster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: afsb-dtp-staging-eks-cluster
+  template:
+    metadata:
+      labels:
+        app: afsb-dtp-staging-eks-cluster
+    spec:
+      containers:
+        - name: afsb-dtp-staging-eks-cluster
+          image: CONTAINER_IMAGE
+          ports:
+            - containerPort: 80
