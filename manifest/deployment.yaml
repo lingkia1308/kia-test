@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: afsb-dtp-staging-eks-cluster
-          image: CONTAINER_IMAGE
+          image: 806263047535.dkr.ecr.ap-southeast-1.amazonaws.com/afsb-dtp-staging-repo:latest
           ports:
             - containerPort: 80
