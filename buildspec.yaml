@@ -46,10 +46,12 @@ phases:
       #   fi
       # Apply the deployment manifest
       - echo "Applying deployment manifest"            
-      - kubectl apply -f manifest/deployment.yaml -n $K8S_NAMESPACE
+      # - kubectl apply -f manifest/deployment.yaml -n $K8S_NAMESPACE
+      - kubectl apply -f manifest/deployment.yaml 
       # Apply the service manifest to expose the port
       - echo "Exposing service with service.yaml"            
-      - kubectl apply -f manifest/service.yaml -n $K8S_NAMESPACE
+      # - kubectl apply -f manifest/service.yaml -n $K8S_NAMESPACE
+      - kubectl apply -f manifest/service.yaml 
       - echo "All done!!!! Kubernetes changes applied"   
       - echo Writing image definitions file...
       - printf '{"ImageURI":"%s"}' $ECR_REPO_URL:$IMAGE_TAG > imageDetail.json
