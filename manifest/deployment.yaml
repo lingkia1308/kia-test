@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: afsb-dtp-staging-eks-cluster
+  namespace:  afsb-dtp-staging-namespace # Use the namespace variable
   labels:
     app: afsb-dtp-staging-eks-cluster
 spec:
