@@ -38,11 +38,11 @@ phases:
       # Check if the namespace exists and create it if not
       - echo "Checking if namespace $K8S_NAMESPACE exists..."
       - |
-        if ! kubectl get namespace $K8S_NAMESPACE; then
+        if kubectl get namespace $K8S_NAMESPACE > /dev/null 2>&1; then
+          echo "Namespace $K8S_NAMESPACE exists, proceeding with deployment..."
+        else
           echo "Namespace $K8S_NAMESPACE does not exist. Creating it..."
           kubectl create namespace $K8S_NAMESPACE
-        else
-          echo "Namespace $K8S_NAMESPACE already exists."
         fi
       # Apply the deployment manifest
       - echo "Applying deployment manifest"            
