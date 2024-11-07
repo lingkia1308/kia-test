@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: afsb-dtp-staging-eks-service
+  name: afsb-dtp-staging-eks-service  # name of service
 spec:
   selector:
-    app: afsb-dtp-staging-eks-cluster
+    app: afsb-dtp-staging-eks-cluster # name of pod
   ports:
     - protocol: TCP
       port: 80  # Port exposed by the service
       targetPort: 80  # Port your container is listening on
-  type: LoadBalancer
+  type: ClusterIP
