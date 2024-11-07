@@ -4,7 +4,7 @@ metadata:
   name: afsb-dtp-staging-eks-service
 spec:
   selector:
-    app: afsb-dtp-staging-eks-service
+    app: afsb-dtp-staging-eks-cluster
   ports:
     - protocol: TCP
       port: 80  # Port exposed by the service
