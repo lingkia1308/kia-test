@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
-// Start the server and listen on port 3000
+// Start the server and listen on port 80
 app.listen(port, () => {
   console.log(`App running and listening on port ${port}`);
 });
