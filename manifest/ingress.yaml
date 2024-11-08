@@ -2,11 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: afsb-dtp-staging-eks-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+annotations:
+    kubernetes.io/ingress.class: alb
 spec:
   rules:
-  - http:
+  - hosts: "foo.bar.com"
+    http:
       paths:
       - path: /test-path
         pathType: Prefix   # Required field in networking.k8s.io/v1
