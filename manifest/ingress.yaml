@@ -6,7 +6,7 @@ annotations:
     kubernetes.io/ingress.class: alb
 spec:
   rules:
-  - hosts: foo.bar.com
+  - host: foo.bar.com
     http:
       paths:
       - path: /test-path
